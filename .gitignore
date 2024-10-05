@@ -1,0 +1,14 @@
+**/.DS_Store
+**/.AppleDouble
+**/.LSOverride
+**/__pycache__
+**/postgres-data
+
+.vscode
+
+.gitattributes
+
+node_modules
+mongo-data
+
+

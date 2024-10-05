@@ -1,0 +1,9 @@
+{
+	"type": "module",
+	"dependencies": {
+		"commander": "^12.1.0",
+		"mongodb": "^6.9.0",
+		"prompt-sync": "^4.2.0",
+		"puppeteer": "^23.5.0"
+	}
+}
