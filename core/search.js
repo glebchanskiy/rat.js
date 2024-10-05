@@ -30,7 +30,7 @@ async function searchIn(domains, db, query) {
 
     if (results.length === 0) {
       log(`\nNo results found for domain ${colorize(domain).cyan} ${colorize().white}\n`);
-      return;
+      continue
     }
     for (const result of results) {
       if (isFirst) {
