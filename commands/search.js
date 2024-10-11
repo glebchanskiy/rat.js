@@ -1,13 +1,12 @@
 
 import { search } from "../core/search.js";
-import { colorize, fastLog, log } from "../utils/amazing-log.js";
 
 export function registerSearchCommand(program) {
   program
     .command("search")
-    .argument("<string>", "query to search for")
+    .argument("<query>", "query")
     .option("-p, --pages <string>", "search only among this resource")
-    .description("searching through web pages")
+    .description("Search for query in all sniffed pages")
     .action(async (query, options) => {
       await search(query, options.pages ? options.pages.split(",") : undefined);
       process.exit(0);

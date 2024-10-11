@@ -9,7 +9,7 @@ export function registerGazeCommand(program) {
     .command("gaze")
     .arguments(
       "[domains...]",
-      "list all sniffed pages or webpages for provided domain"
+      "List all sniffed (indexed) webpages for provided domain"
     )
     .action(async (domains) => {
       if (!domains || domains.length === 0) {
@@ -19,7 +19,6 @@ export function registerGazeCommand(program) {
           log(`>> ${collection}`);
         }
         process.exit(0);
-        F;
       } else {
         const collections = await getSniffedResourcePages(domains);
 
