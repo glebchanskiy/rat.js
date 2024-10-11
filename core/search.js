@@ -18,7 +18,14 @@ export async function search(query, domains) {
 
 async function searchIn(domains, db, query) {
   const regexQuery = createRegex(query);
-  const searchWords = query.split(/[|&]/).map((word) => word.trim());
+  let searchWords;
+
+  if (query.includes('&') || query.includes('|')) {
+    searchWords = query.split(/[|&]/).map((word) => word.trim());
+  } else {
+    searchWords = query.split(' ').map((word) => word.trim());
+  }
+  
   for (const domain of domains) {
     const collection = db.retriveCollection(domain);
 
@@ -68,6 +75,11 @@ async function searchIn(domains, db, query) {
 }
 
 function createRegex(expression) {
+  if (!expression.includes("|") && !expression.includes("&")) {
+    return expression.split(' ')
+      .map((word) => `(?=.*${escapeRegex(word)})`).join("")
+  }
+
   const orSegments = expression.split("|");
 
   const regexParts = [];
