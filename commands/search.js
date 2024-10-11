@@ -1,4 +1,5 @@
 
+import { tokenizeQuery } from "../core/ai-promt-helper.js";
 import { search } from "../core/search.js";
 
 export function registerSearchCommand(program) {
@@ -6,9 +7,16 @@ export function registerSearchCommand(program) {
     .command("search")
     .argument("<query>", "query")
     .option("-p, --pages <string>", "search only among this resource")
+    .option("-a, --ai", "")
     .description("Search for query in all sniffed pages")
     .action(async (query, options) => {
-      await search(query, options.pages ? options.pages.split(",") : undefined);
+      let q = query;
+      if (options.ai) {
+        q = await tokenizeQuery(q);
+        console.log("searching with ai...");
+      }
+      
+      await search(q, options.pages ? options.pages.split(",") : undefined);
       process.exit(0);
     });
 }
