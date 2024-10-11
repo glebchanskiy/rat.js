@@ -36,7 +36,7 @@ async function searchIn(domains, db, query) {
     let isFirst = true;
 
     if (results.length === 0) {
-      log(`\nNo results found for domain ${colorize(domain).cyan} ${colorize().white}\n`);
+      fastLog(`\nNo results found for domain ${colorize(domain).cyan} ${colorize().white}`);
       continue
     }
     for (const result of results) {

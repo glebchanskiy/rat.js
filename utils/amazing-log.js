@@ -21,10 +21,10 @@ export const colorize = (...args) => ({
 export function log(...args) {
     if (args.includes('ERROR')) {
         const text = args.filter(arg => arg !== 'ERROR').join(' ');
-        typewriter(text, 40, 8, true);
+        typewriter(text, 25, 8, true);
     } else {
         const text = args.join(' ');
-        typewriter(text, 40, 8);
+        typewriter(text, 25, 8);
     }
 }
 
